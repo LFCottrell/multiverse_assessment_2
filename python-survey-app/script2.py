@@ -3,11 +3,14 @@ import csv
 from script1 import ticket_6
 
 # print(read_csv('clean_results.csv'))
-for line in ticket_6:
-    print(line)
+import csv
+
+with open("clean_results.csv") as f:
+    reader = csv.reader(f)
+    for row in reader:
+        print(" ".join(row))
 
 
-print(read_csv())
 
 # def read_csv(filename):
 #     rows = []
