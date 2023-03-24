@@ -7,7 +7,6 @@ on:
         description: 'The S3 bucket name'
         required: true
         type: string
-  push:
 
 jobs:
   deploy:
