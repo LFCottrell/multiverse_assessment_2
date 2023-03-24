@@ -1,1 +1,3 @@
 terraform-iac/.terraform
+terraform-iac\.terraform
+.terraform
