@@ -30,4 +30,4 @@ jobs:
         aws-region: eu-west-2
 
     - name: Upload app to S3
-      run: aws s3 cp code.zip s3://${{ inputs.s3_bucket }}/code.zip
+      run: aws s3 cp code.zip s3://mvws9-leigh-e20230324105344058400000002/code.zip
