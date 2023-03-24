@@ -1,0 +1,32 @@
+name: Multiverse App Deployment Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      s3_bucket:
+        description: 'The S3 bucket name'
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: python-survey-app
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v3
+
+    - name: Create application archive
+      run: zip -r code.zip *
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
+
+    - name: Upload app to S3
+      run: aws s3 cp code.zip s3://mvws9-leigh-e20230324105344058400000002/code.zip
