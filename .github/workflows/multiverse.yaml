@@ -28,7 +28,7 @@ jobs:
       run: pytest
       working-directory: python-survey-app
 
-terraform:
+# terraform:
   name: Run Terraform
   runs-on: ubuntu-latest
   defaults:
