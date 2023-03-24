@@ -27,3 +27,47 @@ jobs:
     - name: Run Pytest
       run: pytest
       working-directory: python-survey-app
+
+  terraform:
+    name: Run Terraform
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: terraform-iac
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v3
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: eu-west-2
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v2
+
+    - name: Initialise Terraform
+      run: terraform init
+
+    - name: Plan changes
+      run: terraform plan
+
+    - name: Apply changes
+      run: terraform apply -auto-approve
+      if: |
+        github.ref_name == 'main' &&
+        github.event_name != 'pull_request'
+
+    - name: Commit the Terraform state file
+      uses: EndBug/add-and-commit@v9
+      if: |
+        github.ref_name == 'main' &&
+        github.event_name != 'pull_request'     
+      with:
+        add: '*.tfstate*'
+        cwd: './terraform-iac'
+        message: 'Adding the up-to-date Terraform state file'
