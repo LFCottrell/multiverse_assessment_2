@@ -6,7 +6,7 @@ on:
       s3_bucket:
         description: 'The S3 bucket name'
         required: true
-  
+        type: string
 
 jobs:
   deploy:
