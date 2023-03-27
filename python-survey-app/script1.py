@@ -10,6 +10,6 @@ ticket_4 = capitalize_lines(ticket_3)
 
 ticket_5 = validate_response(ticket_4)
 
-ticket_6 = new_csv('/root/code/clean_results.csv', ticket_5)
+ticket_6 = new_csv('clean_results.csv', ticket_5)
 
 ticket_6
