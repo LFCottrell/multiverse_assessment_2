@@ -40,7 +40,7 @@ mkdir -p /root/code
 aws s3 cp s3://${s3_bucket}/code.zip /tmp/code.zip
 unzip /tmp/code.zip -d /root/code/
 aws s3 cp s3://${s3_bucket}/results.csv /root/code/results.csv
-python3 /root/code/script1.py > /root/code/clean_results.csv
+python3 /root/code/script1.py 
 python3 /root/code/script2.py > /root/code/results.txt
 aws s3 cp /root/code/results.txt s3://${s3_bucket}/results.txt
 EOT
