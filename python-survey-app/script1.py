@@ -12,4 +12,4 @@ ticket_5 = validate_response(ticket_4)
 
 ticket_6 = new_csv('clean_results.csv', ticket_5)
 
-print(ticket_6)
+ticket_6
