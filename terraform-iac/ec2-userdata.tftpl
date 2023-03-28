@@ -41,8 +41,7 @@ aws s3 cp s3://${s3_bucket}/code.zip /tmp/code.zip
 unzip /tmp/code.zip -d /root/code/
 aws s3 cp s3://${s3_bucket}/results.csv /root/code/results.csv
 cd root/code
-python3 script1.py
-python3 script2.py > results.txt
+python3 script1.py > results.txt
 cd ../..
 aws s3 cp /root/code/results.txt s3://${s3_bucket}/results.txt
 EOT
