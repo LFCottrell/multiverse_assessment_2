@@ -15,9 +15,9 @@ ticket_6 = new_csv('clean_results.csv', ticket_5)
 ticket_6
 
 
-import csv
+# import csv
 
-with open("clean_results.csv") as f:
-    reader = csv.reader(f)
-    for row in reader:
-        print(" ".join(row))
+# with open("clean_results.csv") as f:
+#     reader = csv.reader(f)
+#     for row in reader:
+#         print(" ".join(row))
