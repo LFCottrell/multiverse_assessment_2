@@ -1,3 +1,5 @@
 terraform-iac/.terraform
 terraform-iac\.terraform
 .terraform
+python-survey-app/__pycache__
+mvtools/aws-credentials
